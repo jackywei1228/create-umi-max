@@ -7,7 +7,7 @@ export default defineConfig({
   initialState: {},
   request: {},
   layout: {
-    title: '@umijs/max',
+    title: 'LOG CENTER',
   },
   routes: [
     {
@@ -20,16 +20,40 @@ export default defineConfig({
       component: './Home',
     },
     {
-      name: '权限演示',
-      path: '/access',
-      component: './Access',
+      name: 'User Manager',
+      path: '/usermanager',
+      component: './usermanager',
     },
     {
-        name: ' CRUD 示例',
-        path: '/table',
-        component: './Table',
+      name: 'Device Log Config',
+      path: '/devicelogconfig',
+      routes: [
+        {
+          path: '/devicelogconfig',
+          redirect: '/devicelogconfig/logexactmatch',
+        },
+        {
+          name: 'Exact Match',
+          path: '/devicelogconfig/logexactmatch',
+          component: './logexactmatch',
+        },
+        {
+          name: 'Skuid Match',
+          path: '/devicelogconfig/logskuidmatch',
+          component: './logskuidmatch',
+        },
+        {
+          name: 'Fingerprint Match',
+          path: '/devicelogconfig/logfingerprintmatch',
+          component: './logfingerprintmatch',
+        },
+      ],
+    },
+    {
+      name: ' CRUD 示例',
+      path: '/table',
+      component: './Table',
     },
   ],
   npmClient: 'pnpm',
 });
-
